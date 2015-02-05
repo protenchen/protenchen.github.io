@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="customerApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="customerApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="customerApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="customerApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Customer App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/customer.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body ng-controller="CustomerListCtrl">
+
+<div class="col-md-4">
+  <button id="addCustomer">+</button>
+  <ul class="customers">
+    <li ng-repeat="customer in customers | filter:query | orderBy:orderProp">
+      <p ng-click="showInfo(customer)">{{customer.first}} {{customer.last}}</p>
+    </li>
+  </ul>
+</div>
+
+<div class="col-md-6" hidden id="customerInformation">
+  <p>{{customer.first}}</p>
+  <p>{{customer.last}}</p>
+  <p>{{customer.email}}</p>
+  <p>{{customer.company_name}}</p>
+  <p>{{customer.department_name}}</p>
+  <p>{{customer.work_phone}}</p>
+  <p>{{customer.mobile_phone}}</p>
+  <button id="editCustomer">Edit</button>
+</div>
+
+
+<div class="col-md-6" hidden id="editForm">
+  <form class="infoForm">
+    <p><input type="button">Delete</input></p>
+    <p>First Name:<input type="text" name="first" value="{{customer.first}}"></input></p>
+    <p>Last Name:<input type="text" name="last" value="{{customer.last}}"></input></p>
+    <p>Email:<input type="text" name="email" value="{{customer.email}}"></input></p>
+    <p>Company:<input type="text" name="company_name" value="{{customer.company_name}}"></input></p>
+    <p>Department:<input type="text" name="department_name" value="{{customer.department_name}}"></input></p>
+    <p>Work Phone:<input type="text" name="work_phone" value="{{customer.work_phone}}"></input></p>
+    <p>Mobile Phone:<input type="text" name="mobile_phone" value="{{customer.mobile_phone}}"></input></p>
+    <fieldset>
+      <legend>Shipping Address</legend>
+      <p>Address:<input type="text" name="shipment_address" value="{{customer.shipment_address}}"></input></p>
+      <p>City:<input type="text" name="shipment_city" value="{{customer.shipment_city}}"></input></p>
+      <p>State:<input type="text" name="shipment_state" value="{{customer.shipment_state}}"></input></p>
+      <p>Zip Code:<input type="text" name="shipment_zip" value="{{customer.shipment_zip}}"></input></p>
+      <p>Country:<input type="text" name="shipment_country" value="{{customer.shipment_country}}"></input></p>
+    </fieldset>
+    <fieldset>
+      <legend>Mailing Address</legend>
+      <p>Address:<input type="text" name="mail_address" value="{{customer.mail_address}}"></input></p>
+      <p>City:<input type="text" name="mail_city" value="{{customer.mail_city}}"></input></p>
+      <p>State:<input type="text" name="mail_state" value="{{customer.mail_state}}"></input></p>
+      <p>Zip Code:<input type="text" name="mail_zip" value="{{customer.mail_zip}}"></input></p>
+      <p>Country:<input type="text" name="mail_country" value="{{customer.mail_country}}"></input></p>
+    </fieldset>
+    <p>
+      <input type="submit" value="Save"></input>
+      <input type="button" value="Cancel" id="cancel_Edit"></input>
+    </p>
+  </form>
+</div>
+
+<div class="col-md-6" hidden id="informationForm">
+  <form class="infoForm">
+    <p>First Name:<input type="text" name="first"></input></p>
+    <p>Last Name:<input type="text" name="last"></input></p>
+    <p>Email:<input type="text" name="email"></input></p>
+    <p>Company:<input type="text" name="company_name"></input></p>
+    <p>Department:<input type="text" name="department_name"></input></p>
+    <p>Work Phone:<input type="text" name="work_phone"></input></p>
+    <p>Mobile Phone:<input type="text" name="mobile_phone"></input></p>
+    <fieldset>
+      <legend>Shipping Address</legend>
+      <p>Address:<input type="text" name="shipment_address"></input></p>
+      <p>City:<input type="text" name="shipment_city"></input></p>
+      <p>State:<input type="text" name="shipment_state"></input></p>
+      <p>Zip Code:<input type="text" name="shipment_zip"></input></p>
+      <p>Country:<input type="text" name="shipment_country"></input></p>
+    </fieldset>
+    <fieldset>
+      <legend>Mailing Address</legend>
+      <p>Address:<input type="text" name="mail_address"></input></p>
+      <p>City:<input type="text" name="mail_city"></input></p>
+      <p>State:<input type="text" name="mail_state"></input></p>
+      <p>Zip Code:<input type="text" name="mail_zip"></input></p>
+      <p>Country:<input type="text" name="mail_country"></input></p>
+    </fieldset>
+    <p>
+      <input type="submit" value="Save"></input>
+      <input type="button" value="Cancel" id="cancel_Add"></input>
+    </p>
+  </form>
+</div>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="jquery-1.11.2.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="js/customer.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
