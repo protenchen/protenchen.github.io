@@ -1,9 +1,4 @@
 $(document).ready(function() {
-  $("#addCustomer").click(function() {
-    $("#customerInformation").hide();
-    $("#editForm").hide();
-    $("#informationForm").show();
-  });
   $("#cancel_Add").click(function() {
     $("#informationForm").hide();
   });
@@ -18,15 +13,4 @@ $(document).ready(function() {
     $("#customerInformation").show();
   });
 
-
-
-
-
-
-
-
-  $( "form" ).submit(function( event ) {
-    console.log( $( this ).serializeArray() );
-    event.preventDefault();
-  });
 })
